@@ -1,11 +1,28 @@
 import express from "express";
 
 const app = express();
-const PORT = 2999;
+const PORT = 3000;
 
-app.get("/getName", (res, req) => {
+app.use(express.json());
+
+app.get("/getName", (req, res) => {
   var name = "Abelardo";
   res.status(200).json(name);
+});
+
+app.post("/login", (req, res) => {
+  var {username, password} = req.body;
+  if (username == "Abelardo" && password == "123") {
+    res.status(200).json({
+      message: "Login successful.",
+      status: "Success"
+    })
+  } else {
+    res.status(403).json({
+      message: "Invalid username or password.",
+      status: "Failed"
+    })
+  }
 });
 
 app.listen(PORT, () => {
