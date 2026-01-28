@@ -25,6 +25,11 @@ box-shadow: 0 4px 12px rgba(30, 144, 255, 0.3);
 background-color: var(--secondary-green);
 color: white;
 }
+/* Added */
+.btn-success {
+    background-color: var(--);
+} 
+/* Added ^^ */
 .btn-secondary:hover:not(:disabled) {
 background-color: var(--hover-green);
 transform: translateY(-1px);

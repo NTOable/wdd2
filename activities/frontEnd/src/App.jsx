@@ -1,4 +1,5 @@
-// import './App.css'
+import './App.css'
+import Login from "./pages/Login";
 
 function App() {
 
@@ -13,7 +14,6 @@ function App() {
             ...formData,
             [e.target.name]: e.target.value,
         })
-
         await fetch('http://localhost:3000/login', {
             method: 'POST',
             headers: {
@@ -23,20 +23,13 @@ function App() {
         });
     };
 
-    return {
-    <>
-        <h1> Login Page </h1>
-        <div>
-        <form onSubmit = {handleSubmit}>
-        <label for="username"> Username: </label>
-        <input type="text" name="username" id="username"></input>
-        <label for="password"> Password: </label>
-        <input type="password" name="password" id="password"></input>
-        <button type="submit"> Login </button>
-        </form>
-        </div>
-    </>
-    }
-}
+    return (
+        <>
+            <Login>
+            
+            </Login>
+        </>
+    );
+};
 
-export default App
+export default App;

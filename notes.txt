@@ -1,1 +1,4 @@
 && in .jsx files means dynamic rendering
+
+future use in html files when backend is functional:
+value={} onChange={}
