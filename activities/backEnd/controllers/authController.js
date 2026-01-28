@@ -6,6 +6,7 @@ export const register = async (req, res) => {
     try {
         const { username, email, password } = req.body;
         const userExists = await User.findOne({ email });
+        // short-circuiting
         if (userExists) return res.status(400).json({ message: "User already exists." });
 
         const user = await User.create({ username, email, password });
