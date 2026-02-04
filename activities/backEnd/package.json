@@ -1,9 +1,12 @@
 {
   "name": "wdd2",
   "version": "1.0.0",
-  "description": "wdd2",
+  "description": "wdd2 scaffolding project",
+  "keywords": [
+    "ciit"
+  ],
   "license": "ISC",
-  "author": "abelardo",
+  "author": "NTOable",
   "type": "module",
   "main": "index.js",
   "scripts": {

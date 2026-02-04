@@ -1,35 +1,14 @@
+import Login from "./pages/Login.jsx";
 import './App.css'
-import Login from "./pages/Login";
+import { AuthProvider } from "./contexts/authContext.jsx";
 
 function App() {
-
-    const [handleData, setFormData] = useState();
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        // link backend
-        // fetch or axios (3rd)
-
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value,
-        })
-        await fetch('http://localhost:3000/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formData),
-        });
-    };
-
-    return (
-        <>
-            <Login>
-            
-            </Login>
-        </>
-    );
-};
+  
+  return (
+    <AuthProvider>
+       <Login> </Login>
+    </AuthProvider>
+  );
+}
 
 export default App;
