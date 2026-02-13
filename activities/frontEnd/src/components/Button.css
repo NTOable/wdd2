@@ -29,6 +29,12 @@
   color: white;
 }
 
+/* Added */
+.btn-success {
+    background-color: var(--);
+} 
+/* Added ^^ */
+
 .btn-secondary:hover:not(:disabled) {
   background-color: var(--hover-green);
   transform: translateY(-1px);

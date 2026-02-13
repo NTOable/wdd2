@@ -3,13 +3,13 @@ import Card from "../components/Card";
 import Input  from "../components/Input";
 import Button from "../components/Button";
 import "./Login.css";
-import { useAuth } from "../contexts/authContext.jsx";
+import { UseAuth } from "../contexts/authContext.jsx";
 
 const Login = () => {
     const [loading, setLoading] = useState();
     const [errors, setErrors] = useState({});
     const [formData, setFormData] = useState({});
-    const {login} = useAuth();
+    const {login} = UseAuth();
 
     // e means element
     const handleChange = (e) => {
