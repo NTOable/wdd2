@@ -1,2 +1,6 @@
 double check code
 download extensions: vscode-icons, github copilot
+run before npm run dev on frontEnd: npm install react-dom-router
+ask copilot: display error message using Login.jsx and authController.js
+ask copilot: tab component for login and register function
+# t

@@ -25,9 +25,10 @@ const Login = () => {
 
         try {
             // function call to backend
-            await login(formData);
+            await login(formData); // 401
             alert('Login Successful!');
         } catch (error) {
+            // display error message -> ask copilot
             setErrors({message: error.message});
         }
     };

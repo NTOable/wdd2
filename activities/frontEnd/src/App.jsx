@@ -12,6 +12,7 @@ function App() {
     <BrowserRouter>
     <AuthProvider>
       <Routes>
+        <Route path="/" element={<Landing />} />
         <Route path="/login" element={<Login />} />
         <Route path="/inventory" element={<Inventory />} />
       </Routes>
