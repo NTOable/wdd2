@@ -2,8 +2,7 @@ import {useState} from 'react'
 import Card from "../components/Card.jsx";
 import Button from "../components/Button.jsx";
 import Input from "../components/Input.jsx";
-import Input from "../components/TextArea.jsx";
-import Input from "../components/TextArea.jsx";
+import TextArea from "../components/TextArea.jsx";
 import "./Login.css"
 import { inventoryService } from '../services/inventoryService.js';
 
@@ -40,7 +39,7 @@ export default function Inventory() {
             label="Name"
             type="text"
             name="name"
-            value={FormData.name}
+            value={formData.name}
             onChange={handleChange}
             error={errors.name}
             placeholder="Enter product name"
@@ -50,7 +49,7 @@ export default function Inventory() {
             label="Slug"
             type="text"
             name="slug"
-            value={FormData.slug}
+            value={formData.slug}
             onChange={handleChange}
             error={errors.slug}
             disabled
@@ -61,9 +60,9 @@ export default function Inventory() {
             name="description"
             rows={10}
             cols={50}
-            value={FormData.Description}
+            value={formData.description}
             onChange={handleChange}
-            error={errors.Description}
+            error={errors.description}
             placeholder="Enter Description"
             required
         />
@@ -77,7 +76,7 @@ export default function Inventory() {
             style={{resize: "none"}}
         />
         <Button type="submit" loading={loading}>
-          Login
+          Create Product
         </Button>
         </form>
     </Card>
