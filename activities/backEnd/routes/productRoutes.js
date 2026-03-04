@@ -2,7 +2,7 @@ import express from "express";
 import {
   create,
   update,
-} from "../controllers/productController.js";
+} from "../controllers/inventoryController.js";
 
 const router = express.Router();
 

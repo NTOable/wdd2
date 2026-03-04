@@ -69,10 +69,12 @@ export default function Inventory() {
         />
         <Input label="Price" 
             type="number" 
-            value={FormData.price} 
+            name="price"
+            value={formData.price} 
             onChange={handleChange} 
-            error={error.Price} 
-            required style={{"resize: none;"}}
+            error={errors.price} 
+            required
+            style={{resize: "none"}}
         />
         <Button type="submit" loading={loading}>
           Login

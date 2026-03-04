@@ -1,27 +1,22 @@
 import React from "react";
+import Header from "../components/Header";
+import Hero from "../components/Hero";
+import MainContent from "../components/MainContent";
+import Footer from "../components/Footer";
 
-export default function Landing() {
+const Landing = () => {
   return (
-
     <>
-    <header>
-
-         <div className="header-container"> 
-            <div className="logo">   
-                <h2>My Website</h2>
-            </div>
-            <nav className="navigation">
-                <a href="/">Home</a>
-                <a href="/login">Login</a>
-                <a href="/inventory">Inventory</a>
-            </nav>
-            <div className="auth-section">
-                   
-            </div>
-            </div> 
-        
-        </header>  // semantic tag
-   
+      <Header />
+      <Hero
+        title="AIV"
+        description="ARCTIC9"
+        buttonText="Confirm"
+      />
+      <MainContent />
+      <Footer />
     </>
   );
-}
+};
+
+export default Landing;

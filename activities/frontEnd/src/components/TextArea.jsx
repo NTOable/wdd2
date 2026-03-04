@@ -1,4 +1,4 @@
-import "./TextArea.css";
+// import "./TextArea.css";
 
 const TextArea = ({label, error, rows, cols, ...props}) => {
     return (

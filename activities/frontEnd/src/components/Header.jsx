@@ -9,7 +9,7 @@ export default function Header() {
 
          <div className="header-container"> 
             <div className="logo">   
-                <h2>My Website</h2>
+                <h2>AIV's Website</h2>
             </div>
             <nav className="navigation">
                 <a href="/">Home</a>
