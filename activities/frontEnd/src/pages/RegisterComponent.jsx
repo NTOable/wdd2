@@ -2,7 +2,7 @@ import { useState } from "react";
 import Card from "../components/Card";
 import Input from "../components/Input";
 import Button from "../components/Button";
-import { useAuth } from "../contexts/AuthContext";
+import { useAuth } from "../contexts/authContext";
 
 const RegisterComponent = ({ onSuccess }) => {
     const [formData, setFormData] = useState({

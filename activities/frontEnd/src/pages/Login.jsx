@@ -3,7 +3,7 @@ import Card from "../components/Card";
 import Input  from "../components/Input";
 import Button from "../components/Button";
 import "./Login.css";
-import { UseAuth } from "../contexts/authContext.jsx";
+import { UseAuth } from "../contexts/authContext";
 
 const Login = () => {
     const [loading, setLoading] = useState();

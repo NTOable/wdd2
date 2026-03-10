@@ -1,12 +1,14 @@
-/* Header Styles */
 .landing-header {
     background-color: var(--background-white);
+    background:
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.7)),
+        url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSu6BEFOVTP4RV_AmMn_M-2uTKQwhZJFCWpsQ&s");
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     position: sticky;
     top: 0;
     z-index: 100;
-  }
-  .header-container {
+}
+.header-container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 1rem 2rem;
@@ -14,30 +16,36 @@
     justify-content: space-between;
     align-items: center;
     gap: 2rem;
-  }
-  .logo h2 {
+}
+.logo h2 {
+    text-shadow:
+        2px 2px 4px black,
+        0 0 1em blue;
     margin: 0;
     color: var(--primary-blue);
     font-size: 1.75rem;
     font-weight: 700;
-  }
-  .navigation {
+}
+.navigation {
     display: flex;
     gap: 2rem;
     align-items: center;
-  }
-  .navigation a {
-    color: var(--text-dark);
+}
+.navigation a {
+    text-shadow:
+        2px 2px 4px black,
+        0 0 1em blue;
+    color: var(--background-white);
     font-weight: 500;
     transition: color 0.3s ease;
     text-decoration: none;
-  }
-  .navigation a:hover {
+}
+.navigation a:hover {
     color: var(--primary-blue);
     text-decoration: none;
-  }
-  .auth-section {
+}
+.auth-section {
     display: flex;
     gap: 1rem;
     align-items: center;
-  } 
+}

@@ -1,84 +1,94 @@
-import {useState} from 'react'
-import Card from "../components/Card.jsx";
-import Button from "../components/Button.jsx";
-import Input from "../components/Input.jsx";
-import TextArea from "../components/TextArea.jsx";
-import "./Login.css"
-import { inventoryService } from '../services/inventoryService.js';
+import { useState, useEffect } from "react";
+import Card from "../components/Card";
+import Input  from "../components/Input";
+import Button from "../components/Button";
+import "./Login.css";
+import {useAuth} from  "../contexts/authContext";
+import TextArea from "../components/TextArea";
+import slugify from "slugify";
 
-export default function Inventory() {
+const Inventory = () => {
+    const [formData, setFormData] = useState({
+        name: "",
+        slug: "",
+        description: "",
+        price: 0,
+    });
     const [loading, setLoading] = useState();
-    const [formData, setFormData] = useState({})
-    const [errors, setErrors] = useState({})
+    const [errors, setErrors] = useState({});
+    const [slug, setSlug] = useState("");
+    const { login } = useAuth();
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    })); // email and password
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    try {
-      // function call to backend
-      const response =await inventoryService.create(formData);
-      console.log(response);
-      alert("Product Page.");
-    } catch (error) {
-      setErrors({ message: error.message });
+    const handleChange = (e) => {
+        const {name, value} = e.target;
+        setFormData((prev) => ({
+            ...prev,
+            [name]: value
+        }));
     }
-  };
 
-  return (
-    <Card title = "Create Product">   
-        <form onSubmit={handleSubmit} className="login-form" >
-        <Input
-            label="Name"
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            error={errors.name}
-            placeholder="Enter product name"
-            required
-        />
-        <Input
-            label="Slug"
-            type="text"
-            name="slug"
-            value={formData.slug}
-            onChange={handleChange}
-            error={errors.slug}
-            disabled
-        />
-        <TextArea
-            label="Description"
-            type="text"
-            name="description"
-            rows={10}
-            cols={50}
-            value={formData.description}
-            onChange={handleChange}
-            error={errors.description}
-            placeholder="Enter Description"
-            required
-        />
-        <Input label="Price" 
-            type="number" 
-            name="price"
-            value={formData.price} 
-            onChange={handleChange} 
-            error={errors.price} 
-            required
-            style={{resize: "none"}}
-        />
-        <Button type="submit" loading={loading}>
-          Create Product
-        </Button>
-        </form>
-    </Card>
-  );
-}
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        try {
+            await login(formData);
+            alert("Product Page.");
+        } catch(error) {
+            setErrors({error: error.message});
+        }
+    }
+
+useEffect (() => {
+    const generatedSlug = slugify(formData.name, {
+        lower: true,
+        strict: true
+});
+    setSlug(generatedSlug);
+}, [formData.name]);
+
+    return (
+        <Card title="Create Product">
+            <form className="login-form" onSubmit={handleSubmit}>
+                <Input 
+                    label="Name"
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    error={errors.name}
+                    placeholder="Enter product name"
+                    required
+                />
+                <Input 
+                    label="Slug"
+                    type="text"
+                    name="slug"
+                    value={slug}
+                    onChange={handleChange}
+                    error={errors.slug}
+                    disabled
+                />
+                <TextArea
+                label="Description"
+                name="description"
+                error={errors.description}
+                rows={10}
+                cols={40}>
+                </TextArea>
+                <Input
+                label="Price"
+                name="price"
+                type="number"
+                value={formData.price}
+                error={errors.price}
+                onCHange={handleChange}
+                />
+                <Button type="submit" loading={loading}>
+                    Save Product
+                </Button>
+            </form>
+        </Card>
+    );
+};
+
+export default Inventory;   
