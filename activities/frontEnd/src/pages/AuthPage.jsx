@@ -1,6 +1,6 @@
 import { useState } from "react";
-import LoginComponent from "../components/auth/LoginComponent";
-import RegisterComponent from "../components/auth/RegisterComponent";
+import LoginComponent from "../components/LoginComponent";
+import RegisterComponent from "../components/RegisterComponent";
 import Card from "../components/Card";
 import "./AuthPage.css";
 

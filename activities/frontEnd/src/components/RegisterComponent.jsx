@@ -1,7 +1,7 @@
 import { useState } from "react";
-import Input from "../Input";
-import Button from "../Button";
-import { useAuth } from "../../contexts/AuthContext";
+import Input from "Input";
+import Button from "Button";
+import { useAuth } from "../contexts/authContext";
 
 const RegisterComponent = () => {
   const [formData, setFormData] = useState({

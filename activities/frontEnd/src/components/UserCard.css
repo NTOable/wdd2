@@ -1,0 +1,27 @@
+.user-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.07);
+}
+
+.user-card__name {
+  font-weight: 600;
+  color: #111827;
+  margin: 0;
+}
+
+.user-card__email {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin: 0;
+}
+
+.user-card__actions {
+  display: flex;
+  gap: 0.5rem;
+}
