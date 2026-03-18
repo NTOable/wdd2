@@ -34,7 +34,10 @@ const FeaturedProducts = ({ limit = 4, onProductClick }) => {
   if (loading) {
     return (
       <div className="featured-products-container">
-        <h2 className="featured-products-title">Featured Products</h2>
+        <div className="featured-products-header">
+          <h2 className="featured-products-title">Featured Products</h2>
+          <p className="featured-products-subtitle">Discover our handpicked selections</p>
+        </div>
         <div className="featured-products-grid">
           {[...Array(limit)].map((_, index) => (
             <div key={index} className="featured-product-skeleton">
@@ -55,7 +58,10 @@ const FeaturedProducts = ({ limit = 4, onProductClick }) => {
   if (error) {
     return (
       <div className="featured-products-container">
-        <h2 className="featured-products-title">Featured Products</h2>
+        <div className="featured-products-header">
+          <h2 className="featured-products-title">Featured Products</h2>
+          <p className="featured-products-subtitle">Discover our handpicked selections</p>
+        </div>
         <div className="featured-products-error">
           <p>{error}</p>
           <button onClick={handleRetry} className="retry-button">
@@ -70,7 +76,10 @@ const FeaturedProducts = ({ limit = 4, onProductClick }) => {
   if (products.length === 0) {
     return (
       <div className="featured-products-container">
-        <h2 className="featured-products-title">Featured Products</h2>
+        <div className="featured-products-header">
+          <h2 className="featured-products-title">Featured Products</h2>
+          <p className="featured-products-subtitle">Discover our handpicked selections</p>
+        </div>
         <div className="featured-products-empty">
           <p>No featured products available at the moment.</p>
           <p>Check back soon for exciting deals!</p>
@@ -81,8 +90,10 @@ const FeaturedProducts = ({ limit = 4, onProductClick }) => {
 
   return (
     <div className="featured-products-container">
-      <h2 className="featured-products-title">Featured Products</h2>
-      <p className="featured-products-subtitle">Discover our handpicked selections</p>
+      <div className="featured-products-header">
+        <h2 className="featured-products-title">Featured Products</h2>
+        <p className="featured-products-subtitle">Discover our handpicked selections</p>
+      </div>
       <div className="featured-products-grid">
         {products.map((product) => (
           <ProductCard 
