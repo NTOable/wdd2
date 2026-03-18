@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useAuth } from "./hooks/useAuth";
 import Landing from "./pages/Landing";
 import Login from "./pages/Login";
+import AuthPage from "./pages/AuthPage";
 import Inventory from "./pages/Inventory";
 
 function PrivateRoute({ children }) {
@@ -16,6 +17,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/auth" element={<AuthPage />} />
         <Route
           path="/inventory"
           element={

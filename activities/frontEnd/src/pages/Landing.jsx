@@ -9,7 +9,7 @@ const Landing = () => {
   return (
     <>
       <Header />
-      <Hero title="AIV" description="ARCTIC9" buttonText="Confirm" />
+      <Hero title="AIV" description="My App" buttonText="Confirm" />
       <MainContent />
       <Footer />
     </>

@@ -6,21 +6,18 @@ const MainContent = () => {
   const features = [
     {
       id: 1,
-      title: "GENIUS",
-      description:
-        "arctic9",
+      title: "Card 1",
+      description: "1",
     },
     {
       id: 2,
-      title: "MOONSCORCHED",
-      description:
-        "you make me go crazy over you.",
+      title: "Card 2",
+      description: "2",
     },
     {
       id: 3,
-      title: "THE RAIN PALACE",
-      description:
-        "the phantom thieves will steal your heart.",
+      title: "Card 3",
+      description: "3",
     },
   ];
   useEffect(() => {
@@ -30,8 +27,8 @@ const MainContent = () => {
   return (
     <main className="content-wrapper">
       <section className="intro-section">
-        <h2>Introduction</h2>
-        <p>AIV</p>
+        <h2>Landing Page</h2>
+        <p>My App</p>
       </section>
       <div className="features-grid">
         {features.map((feature) => (

@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Input from "Input";
-import Button from "Button";
+import Input from "./Input";
+import Button from "./Button";
 import { useAuth } from "../hooks/useAuth";
 
 const RegisterComponent = () => {
