@@ -5,14 +5,11 @@ import MainContent from "../components/MainContent";
 import Footer from "../components/Footer";
 
 const Landing = () => {
+  console.log("Landing is rendering");
   return (
     <>
       <Header />
-      <Hero
-        title="AIV"
-        description="ARCTIC9"
-        buttonText="Confirm"
-      />
+      <Hero title="AIV" description="ARCTIC9" buttonText="Confirm" />
       <MainContent />
       <Footer />
     </>

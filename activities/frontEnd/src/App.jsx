@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { useAuth } from "./contexts/AuthContext";
+import { useAuth } from "./hooks/useAuth";
 import Landing from "./pages/Landing";
 import Login from "./pages/Login";
 import Inventory from "./pages/Inventory";
@@ -10,6 +10,7 @@ function PrivateRoute({ children }) {
 }
 
 export default function App() {
+  console.log("App is rendering");
   return (
     <BrowserRouter>
       <Routes>
