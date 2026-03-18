@@ -5,8 +5,7 @@ ask copilot: display error message using Login.jsx and authController.js
 ask copilot: tab component for login and register function
 # t
 
-to run in getcode (good)
+to run in opencode (good)
 Create user story from the base details and make it promptable. 
 Save it to the docs directory.
 Implement user story in @docs\frontend\user\integration
-    

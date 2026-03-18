@@ -3,13 +3,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(
-    135deg,
-    var(--primary-blue) 0%,
-    var(--secondary-green) 100%
-  );
-  color: white;
+  background-color: var(--background-white);
+  color: #333;
   text-align: center;
+  padding: 0 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 .hero-content h1 {
   font-size: 3.5rem;

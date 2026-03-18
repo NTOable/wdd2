@@ -1,11 +1,6 @@
 .footer-container {
-  background: linear-gradient(
-    135deg,
-    var(--primary-blue) 0%,
-    var(--secondary-green) 100%
-  );
-  color: white;
-  padding: 4rem 2rem 1rem;
+  background-color: var(--background-white);
+  color: #333;
   margin-top: 4rem;
 }
 
@@ -26,9 +21,7 @@
 .footer-brand h3 {
   font-size: 1.5rem;
   margin-bottom: 1rem;
-}
-
-.footer-links {
+  color: #333;
   display: flex;
   gap: 4rem;
 }
