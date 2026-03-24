@@ -4,6 +4,7 @@ import cors from "cors";
 import connectDB from "./config/db.js"; 
 import authRoutes from "./routes/authRoutes.js";
 import inventoryRoutes from "./routes/productRoutes.js";
+import cartRoutes from "./routes/cartRoutes.js";
 
 const app = express();
 const PORT = 3000;
@@ -12,11 +13,12 @@ dotenv.config();
 app.use(express.json());
 app.use(cors({
     origin: "*",
-    methods: ["GET, POST"],
-}),
-);
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+}),);
 app.use("/api/auth", authRoutes);
 app.use("/api/inventory", inventoryRoutes);
+app.use("/api/cart", cartRoutes);
 
 app.listen(PORT, () => {
     connectDB();

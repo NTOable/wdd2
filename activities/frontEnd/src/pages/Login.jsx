@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Card from "../components/Card";
 import Input from "../components/Input";
 import Button from "../components/Button";
@@ -10,6 +11,7 @@ const Login = () => {
   const [errors, setErrors] = useState({});
   const [formData, setFormData] = useState({});
   const { login } = useAuth();
+  const navigate = useNavigate();
 
   // e means element
   const handleChange = (e) => {
@@ -26,7 +28,8 @@ const Login = () => {
     try {
       // function call to backend
       await login(formData); // 401
-      alert("Login Successful!");
+      // Redirect to Inventory page after successful login
+      navigate("/inventory");
     } catch (error) {
       // display error message -> ask copilot
       setErrors({ message: error.message });

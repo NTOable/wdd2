@@ -20,8 +20,18 @@ export const register = async (req, res) => {
 export const login = async (req, res) => {
     try {
         const { email, password } = req.body;
+        
+        // Check if user exists
         const user = await User.findOne({email});
+        if (!user) {
+            return res.status(401).json({ message: "Invalid email or password." });
+        }
+        
+        // Check if password matches
         const passwordMatched = await bcrypt.compare(password, user.password);
+        if (!passwordMatched) {
+            return res.status(401).json({ message: "Invalid email or password." });
+        }
 
         if (user && passwordMatched) {
             const token = jwt.sign(
@@ -34,7 +44,7 @@ export const login = async (req, res) => {
                 process.env.JWT_SECRET,
                 { expiresIn: "1d" },
             );
-            res.status(200).json({_id: user._id, username: user.username, token});
+            res.status(200).json({_id: user._id, username: user.username, email: user.email, token});
         }
     } catch(error) {
         res.status(500).json({ message: error.message});

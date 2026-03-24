@@ -18,7 +18,13 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (credentials) => {
     const data = await authService.login(credentials);
-    setUser(data.user);
+    // Backend returns {_id, username, token} - normalize to user object
+    const user = {
+      _id: data._id,
+      username: data.username,
+      email: data.email
+    };
+    setUser(user);
     return data;
   };
 

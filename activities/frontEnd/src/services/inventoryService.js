@@ -1,7 +1,7 @@
 const API_URL = "http://localhost:3000/api/inventory";
 
 export const inventoryService = {
-    // Get all products with optional filters
+    // Get all products (returns products array)
     async getAll(filters = {}) {
         const queryParams = new URLSearchParams(filters).toString();
         const response = await fetch(`${API_URL}?${queryParams}`);
@@ -12,7 +12,8 @@ export const inventoryService = {
             throw new Error(data.message || "Services: Get products failed");
         }
 
-        return data;
+        // Return just the products array for simpler usage
+        return data.products || [];
     },
 
     // Get featured products only
@@ -25,7 +26,7 @@ export const inventoryService = {
             throw new Error(data.message || "Services: Get featured products failed");
         }
 
-        return data;
+        return data.products || [];
     },
 
     async create(productData) {

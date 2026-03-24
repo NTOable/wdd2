@@ -34,7 +34,13 @@ export const authService = {
     if (data.token) {
       // localStorage is the browser storage
       localStorage.setItem("token", data.token);
-      localStorage.setItem("user", JSON.stringify(data.user));
+      // Backend returns {_id, username, token} - create user object
+      const user = {
+        _id: data._id,
+        username: data.username,
+        email: data.email
+      };
+      localStorage.setItem("user", JSON.stringify(user));
     }
     return data;
   },

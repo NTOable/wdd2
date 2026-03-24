@@ -2,7 +2,7 @@ import "./Hero.css";
 import React from "react";
 import FeaturedProducts from "./FeaturedProducts";
 
-const Hero = ({ title = "Welcome", description = "Discover amazing products", buttonText = "Get Started", showFeatured = true }) => {
+const Hero = ({ title = "Welcome", description = "Discover amazing products", buttonText = "Get Started", showFeatured = true, onProductClick }) => {
   return (
     <>
       <section className="hero-container">
@@ -42,7 +42,7 @@ const Hero = ({ title = "Welcome", description = "Discover amazing products", bu
         </div>
       </section>
       {showFeatured && (
-        <FeaturedProducts limit={4} />
+        <FeaturedProducts limit={4} onProductClick={onProductClick} />
       )}
     </>
   );

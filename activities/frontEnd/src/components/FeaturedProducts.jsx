@@ -17,7 +17,8 @@ const FeaturedProducts = ({ limit = 4, onProductClick }) => {
       setLoading(true);
       setError(null);
       const data = await inventoryService.getFeatured(limit);
-      setProducts(data.products || []);
+      // inventoryService.getFeatured now returns products array directly
+      setProducts(data || []);
     } catch (err) {
       setError(err.message || "Failed to load featured products");
       console.error("Error fetching featured products:", err);
