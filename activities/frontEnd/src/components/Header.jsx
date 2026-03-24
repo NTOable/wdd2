@@ -14,7 +14,6 @@ export default function Header() {
           </div>
           <nav className="navigation">
             <Link to="/">Home</Link>
-            <Link to="/login">Login</Link>
             <Link to="/inventory">Inventory</Link>
           </nav>
           <div className="auth-section">

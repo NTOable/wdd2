@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Card from "../components/Card";
 import Input from "../components/Input";
 import Button from "../components/Button";
-import "./Login.css";
+import "./Inventory.css";
 import { useCart } from "../hooks/useCart";
 import TextArea from "../components/TextArea";
 import slugify from "slugify";
@@ -98,9 +98,9 @@ const Inventory = () => {
   }, []);
 
   return (
-    <div style={{ padding: '20px' }}>
+    <div className="inventory-container">
       <Card title="Create Product">
-        <form className="login-form" onSubmit={handleSubmit}>
+        <form className="inventory-form" onSubmit={handleSubmit}>
           <Input
             label="Name"
             type="text"
@@ -147,15 +147,15 @@ const Inventory = () => {
         {productsLoading ? (
           <p>Loading products...</p>
         ) : products.length === 0 ? (
-          <p>No products available. Create one above!</p>
+          <p className="empty-state">No products available. Create one above!</p>
         ) : (
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '15px' }}>
+          <div className="inventory-grid">
             {products.map((product) => (
-              <div key={product._id} style={{ border: '1px solid #ddd', padding: '15px', borderRadius: '8px' }}>
-                <h4 style={{ margin: '0 0 10px 0' }}>{product.name}</h4>
-                <p style={{ color: '#666', fontSize: '14px' }}>{product.description?.substring(0, 50)}...</p>
-                <p style={{ fontWeight: 'bold', fontSize: '18px', margin: '10px 0' }}>${product.price}</p>
-                <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+              <div className="product-card" key={product._id}>
+                <h4>{product.name}</h4>
+                <p className="description">{product.description?.substring(0, 50)}...</p>
+                <p className="price">${product.price}</p>
+                <div className="actions">
                   <Button 
                     onClick={() => setSelectedProduct(product)}
                   >

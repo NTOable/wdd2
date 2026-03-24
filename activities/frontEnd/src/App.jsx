@@ -15,7 +15,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Landing />} />
+        <Route path="/" element={<Navigate to="/auth?mode=register" replace />} />
         <Route path="/login" element={<Login />} />
         <Route path="/auth" element={<AuthPage />} />
         <Route
