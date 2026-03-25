@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 
 export const create = async (req, res) => {
   try {
-    const { name, slug, description, price, category, isFeatured, isActive } = req.body;
+    const { name, slug, description, price, category, isFeatured, isActive, thumbnail, stock, tags } = req.body;
     // search for product
     const productExists = await Product.findOne({ slug });
     if (productExists)
@@ -15,10 +15,13 @@ export const create = async (req, res) => {
       description, 
       price, 
       category, 
+      thumbnail: thumbnail || "",
+      stock: stock || 0,
+      tags: tags || [],
       isFeatured: isFeatured ?? false, 
       isActive: isActive ?? true 
     });
-    res.status(201).json({ message: "Product listing successful." });
+    res.status(201).json({ message: "Product listing successful.", product });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

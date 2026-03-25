@@ -5,6 +5,7 @@ import Login from "./pages/Login";
 import AuthPage from "./pages/AuthPage";
 import Inventory from "./pages/Inventory";
 import Checkout from "./pages/Checkout";
+import Products from "./pages/Products";
 
 function PrivateRoute({ children }) {
   const { user } = useAuth();
@@ -20,6 +21,7 @@ export default function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/auth" element={<AuthPage />} />
         <Route path="/landing" element={<Landing />} />
+        <Route path="/products" element={<Products />} />
         <Route
           path="/inventory"
           element={

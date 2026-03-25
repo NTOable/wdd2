@@ -36,8 +36,8 @@ const FeaturedProducts = ({ limit = 4, onProductClick }) => {
     return (
       <div className="featured-products-container">
         <div className="featured-products-header">
-          <h2 className="featured-products-title">Featured Products</h2>
-          <p className="featured-products-subtitle">Discover our handpicked selections</p>
+          <h2 className="featured-products-title">Best-Seller</h2>
+          <p className="featured-products-subtitle">Discover handpicked selections from our best-selling items!</p>
         </div>
         <div className="featured-products-grid">
           {[...Array(limit)].map((_, index) => (
@@ -60,8 +60,8 @@ const FeaturedProducts = ({ limit = 4, onProductClick }) => {
     return (
       <div className="featured-products-container">
         <div className="featured-products-header">
-          <h2 className="featured-products-title">Featured Products</h2>
-          <p className="featured-products-subtitle">Discover our handpicked selections</p>
+          <h2 className="featured-products-title">Best-Seller</h2>
+          <p className="featured-products-subtitle">Check out our handpicked selections from our best-selling items!</p>
         </div>
         <div className="featured-products-error">
           <p>{error}</p>
@@ -78,8 +78,8 @@ const FeaturedProducts = ({ limit = 4, onProductClick }) => {
     return (
       <div className="featured-products-container">
         <div className="featured-products-header">
-          <h2 className="featured-products-title">Featured Products</h2>
-          <p className="featured-products-subtitle">Discover our handpicked selections</p>
+          <h2 className="featured-products-title">Best-Seller</h2>
+          <p className="featured-products-subtitle">Check out our handpicked selections from our best-selling items!</p>
         </div>
         <div className="featured-products-empty">
           <p>No featured products available at the moment.</p>
@@ -92,8 +92,8 @@ const FeaturedProducts = ({ limit = 4, onProductClick }) => {
   return (
     <div className="featured-products-container">
       <div className="featured-products-header">
-        <h2 className="featured-products-title">Featured Products</h2>
-        <p className="featured-products-subtitle">Discover our handpicked selections</p>
+        <h2 className="featured-products-title">Best-Seller</h2>
+        <p className="featured-products-subtitle">Check out our handpicked selections from our best-selling items!</p>
       </div>
       <div className="featured-products-grid">
         {products.map((product) => (

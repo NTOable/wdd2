@@ -181,7 +181,7 @@ const Checkout = () => {
             </form>
           </Card>
 
-          <Card title="Payment Information" style={{ marginTop: '20px' }}>
+          <Card title="Payment Information">
             <form onSubmit={handleSubmit}>
               <Input
                 label="Card Number"

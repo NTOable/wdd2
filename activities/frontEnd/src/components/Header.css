@@ -21,6 +21,14 @@
   align-items: center;
   gap: 24px;
   height: 72px;
+  position: relative;
+}
+
+/* Center the navigation with logo */
+.header-container .navigation {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 /* Logo */

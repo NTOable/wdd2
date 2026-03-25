@@ -17,6 +17,9 @@ const Inventory = () => {
     slug: "",
     description: "",
     price: 0,
+    stock: 0,
+    thumbnail: "",
+    tags: "",
   });
   const [loading, setLoading] = useState();
   const [errors, setErrors] = useState({});
@@ -25,6 +28,7 @@ const Inventory = () => {
   const [productsLoading, setProductsLoading] = useState(true);
   const [addingToCart, setAddingToCart] = useState(null);
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const [imagePreview, setImagePreview] = useState(null);
   
   const { addToCart } = useCart();
 
@@ -32,25 +36,43 @@ const Inventory = () => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
-      [name]: value,
+      [name]: name === "price" || name === "stock" ? Number(value) : value,
     }));
+  };
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setFormData((prev) => ({
+          ...prev,
+          thumbnail: reader.result,
+        }));
+        setImagePreview(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      // Include the generated slug in formData
+      const tagsArray = formData.tags
+        ? formData.tags.split(",").map(tag => tag.trim()).filter(tag => tag)
+        : [];
+      
       const productData = {
         ...formData,
         slug: slug,
+        tags: tagsArray,
       };
       await inventoryService.create(productData);
       alert("Product created successfully!");
-      // Reset form
-      setFormData({ name: "", slug: "", description: "", price: 0 });
+      setFormData({ name: "", slug: "", description: "", price: 0, stock: 0, thumbnail: "", tags: "" });
       setSlug("");
-      // Refresh products
+      setImagePreview(null);
       const data = await inventoryService.getAll();
       setProducts(data);
     } catch (error) {
@@ -120,39 +142,70 @@ const Inventory = () => {
             placeholder="Enter product name"
             required
           />
-          <Input
-            label="Slug"
-            type="text"
-            name="slug"
-            value={slug}
-            onChange={handleChange}
-            error={errors.slug}
-            disabled
-          />
           <TextArea
             label="Description"
             name="description"
             value={formData.description}
             onChange={handleChange}
             error={errors.description}
-            rows={10}
-            cols={40}
+            rows={4}
           ></TextArea>
+          <div className="input-group">
+            <label className="input-label">Image</label>
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleImageChange}
+              className="input-field"
+              style={{ padding: '0.5rem' }}
+            />
+            {imagePreview && (
+              <div style={{ marginTop: '10px' }}>
+                <img 
+                  src={imagePreview} 
+                  alt="Preview" 
+                  style={{ maxWidth: '200px', borderRadius: '8px' }} 
+                />
+              </div>
+            )}
+          </div>
           <Input
-            label="Price"
-            name="price"
-            type="number"
-            value={formData.price}
-            error={errors.price}
+            label="Tags"
+            type="text"
+            name="tags"
+            value={formData.tags}
             onChange={handleChange}
+            placeholder="charger, usb, fast charging (comma separated)"
           />
+          <div className="form-row">
+            <Input
+              label="Price"
+              name="price"
+              type="number"
+              value={formData.price}
+              error={errors.price}
+              onChange={handleChange}
+              min="0"
+              step="0.01"
+            />
+            <Input
+              label="Stock"
+              name="stock"
+              type="number"
+              value={formData.stock}
+              error={errors.stock}
+              onChange={handleChange}
+              min="0"
+            />
+          </div>
           <Button type="submit" loading={loading}>
             Save Product
           </Button>
         </form>
       </Card>
 
-      <Card title="Available Products" style={{ marginTop: '20px' }}>
+      {/* Available Products section - hidden for now */}
+      {/* <Card title="Available Products" style={{ marginTop: '20px' }}>
         {productsLoading ? (
           <p>Loading products...</p>
         ) : products.length === 0 ? (
@@ -181,7 +234,7 @@ const Inventory = () => {
             ))}
           </div>
         )}
-      </Card>
+      </Card> */}
 
       {selectedProduct && (
         <ProductDetails 

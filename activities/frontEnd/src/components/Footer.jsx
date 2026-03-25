@@ -7,8 +7,8 @@ const Footer = () => {
       <div className="footer-content">
         <div className="footer-brand">
           <div className="footer-brand-logo">
-            <div className="logo-icon">A</div>
-            <h3>AIV</h3>
+            <div className="logo-icon">TT</div>
+            <h3>TechTail</h3>
           </div>
           <p>Your trusted destination for quality products. We offer the best selection with unbeatable prices and exceptional customer service.</p>
           <div className="footer-social">
@@ -35,7 +35,7 @@ const Footer = () => {
         <div className="link-group">
           <h4>Shop</h4>
           <ul>
-            <li><a href="/inventory">All Products</a></li>
+            <li><a href="/products">All Products</a></li>
             <li><a href="#">Featured</a></li>
             <li><a href="#">New Arrivals</a></li>
             <li><a href="#">Best Sellers</a></li>
@@ -63,7 +63,7 @@ const Footer = () => {
       </div>
 
       <div className="footer-bottom">
-        <p>&copy; 2026 AIV. All rights reserved.</p>
+        <p>&copy; 2026 AIV CIIT. All rights reserved.</p>
         <div className="footer-bottom-links">
           <a href="#">Privacy Policy</a>
           <a href="#">Terms of Service</a>

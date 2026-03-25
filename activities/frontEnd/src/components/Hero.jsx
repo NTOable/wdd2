@@ -2,7 +2,7 @@ import "./Hero.css";
 import React from "react";
 import FeaturedProducts from "./FeaturedProducts";
 
-const Hero = ({ title = "Welcome", description = "Discover amazing products", buttonText = "Get Started", showFeatured = true, onProductClick }) => {
+const Hero = ({ title = "Welcome", description = "Discover amazing products", buttonText = "Get Started", showFeatured = true, onProductClick, onButtonClick }) => {
   return (
     <>
       <section className="hero-container">
@@ -13,12 +13,12 @@ const Hero = ({ title = "Welcome", description = "Discover amazing products", bu
             )}
           </h1>
           <p>{description}</p>
-          <a href="/inventory" className="hero-cta">
+          <button onClick={onButtonClick} className="hero-cta">
             {buttonText}
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M5 12h14M12 5l7 7-7 7" />
             </svg>
-          </a>
+          </button>
           
           <div className="hero-stats">
             <div className="hero-stat">
@@ -38,7 +38,6 @@ const Hero = ({ title = "Welcome", description = "Discover amazing products", bu
         
         <div className="scroll-indicator">
           <span></span>
-          <span>Scroll</span>
         </div>
       </section>
       {showFeatured && (

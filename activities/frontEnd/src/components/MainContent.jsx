@@ -1,43 +1,67 @@
 import "./MainContent.css";
-import React from "react";
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { inventoryService } from "../services/inventoryService";
+import Button from "./Button";
 
-const MainContent = () => {
-  const features = [
-    {
-      id: 1,
-      title: "Card 1",
-      description: "1",
-    },
-    {
-      id: 2,
-      title: "Card 2",
-      description: "2",
-    },
-    {
-      id: 3,
-      title: "Card 3",
-      description: "3",
-    },
-  ];
+const MainContent = ({ onProductClick }) => {
+  const navigate = useNavigate();
+  const [featuredProducts, setFeaturedProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
-    console.log(features);
+    const fetchFeatured = async () => {
+      try {
+        const products = await inventoryService.getFeatured(8);
+        setFeaturedProducts(products);
+      } catch (error) {
+        console.error("Error fetching featured products:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchFeatured();
   }, []);
 
   return (
     <main className="content-wrapper">
       <section className="intro-section">
-        <h2>Landing Page</h2>
-        <p>My App</p>
+        <h2>Featured Products</h2>
+        <p>Check out our products!</p>
       </section>
-      <div className="features-grid">
-        {features.map((feature) => (
-          <div key={feature.id} className="feature-card">
-            <h3>{feature.title}</h3>
-            <p>{feature.description}</p>
+      
+      {loading ? (
+        <p>Loading featured products...</p>
+      ) : featuredProducts.length > 0 ? (
+        <>
+          <div className="features-grid">
+            {featuredProducts.map((product) => (
+              <div key={product._id} className="feature-card">
+                {product.thumbnail && (
+                  <div className="product-image">
+                    <img src={product.thumbnail} alt={product.name} />
+                  </div>
+                )}
+                <h3>{product.name}</h3>
+                <p className="product-description">{product.description?.substring(0, 60)}...</p>
+                <p className="product-price">${product.price?.toFixed(2)}</p>
+                <div className="feature-card-actions">
+                  <Button onClick={() => onProductClick(product)}>
+                    View Details
+                  </Button>
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
+          <div className="view-all-container">
+            <Button onClick={() => navigate("/products")}>
+              View All Products
+            </Button>
+          </div>
+        </>
+      ) : (
+        <p className="no-products">No featured products available.</p>
+      )}
     </main>
   );
 };

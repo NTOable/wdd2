@@ -15,7 +15,7 @@ const sampleProducts = [
     stock: 50,
     isFeatured: true,
     isActive: true,
-    thumbnail: "https://placehold.co/300x300?text=Charger",
+    thumbnail: "https://placehold.co/300x300?text=USB-C+Fast+Charger+65W",
     tags: ["charger", "usb-c", "fast charging", "gan"]
   },
   {
@@ -27,7 +27,7 @@ const sampleProducts = [
     stock: 100,
     isFeatured: false,
     isActive: true,
-    thumbnail: "https://placehold.co/300x300?text=Cable",
+    thumbnail: "https://placehold.co/300x300?text=Lightning+to+USB+Cable+1m",
     tags: ["cable", "lightning", "mfi", "apple"]
   },
   {
@@ -39,7 +39,7 @@ const sampleProducts = [
     stock: 75,
     isFeatured: true,
     isActive: true,
-    thumbnail: "https://placehold.co/300x300?text=HDMI",
+    thumbnail: "https://placehold.co/300x300?text=HDMI+Cable+4K+2m",
     tags: ["cable", "hdmi", "4k", "video"]
   },
   
@@ -53,7 +53,7 @@ const sampleProducts = [
     stock: 200,
     isFeatured: false,
     isActive: true,
-    thumbnail: "https://placehold.co/300x300?text=Screen+Protector",
+    thumbnail: "https://placehold.co/300x300?text=Tempered+Glass+Screen+Protector",
     tags: ["screen protector", "tempered glass", "protection"]
   },
   {
@@ -65,7 +65,7 @@ const sampleProducts = [
     stock: 60,
     isFeatured: true,
     isActive: true,
-    thumbnail: "https://placehold.co/300x300?text=Wireless+Charger",
+    thumbnail: "https://placehold.co/300x300?text=Wireless+Charging+Pad+15W",
     tags: ["wireless charger", "qi", "charging pad"]
   },
   {
@@ -77,7 +77,7 @@ const sampleProducts = [
     stock: 150,
     isFeatured: false,
     isActive: true,
-    thumbnail: "https://placehold.co/300x300?text=Phone+Case",
+    thumbnail: "https://placehold.co/300x300?text=Phone+Case+Clear+Back",
     tags: ["phone case", "clear case", "protection"]
   },
   
@@ -91,7 +91,7 @@ const sampleProducts = [
     stock: 30,
     isFeatured: true,
     isActive: true,
-    thumbnail: "https://placehold.co/300x300?text=External+SSD",
+    thumbnail: "https://placehold.co/300x300?text=External+SSD+1TB+NVMe",
     tags: ["ssd", "external storage", "nvme", "portable"]
   },
   {
@@ -103,7 +103,7 @@ const sampleProducts = [
     stock: 45,
     isFeatured: false,
     isActive: true,
-    thumbnail: "https://placehold.co/300x300?text=USB+Hub",
+    thumbnail: "https://placehold.co/300x300?text=USB+Hub+7-Port",
     tags: ["usb hub", "usb 3.0", "hub", "accessories"]
   },
   {
@@ -115,7 +115,7 @@ const sampleProducts = [
     stock: 80,
     isFeatured: false,
     isActive: true,
-    thumbnail: "https://placehold.co/300x300?text=Keyboard+Switches",
+    thumbnail: "https://placehold.co/300x300?text=Mechanical+Keyboard+Switches+Red",
     tags: ["keyboard switches", "mechanical", "cherry mx", "red"]
   },
   
@@ -129,7 +129,7 @@ const sampleProducts = [
     stock: 70,
     isFeatured: true,
     isActive: true,
-    thumbnail: "https://placehold.co/300x300?text=Earbuds",
+    thumbnail: "https://placehold.co/300x300?text=Wireless+Earbuds+TWS",
     tags: ["earbuds", "tws", "bluetooth", "wireless audio"]
   },
   {
@@ -141,7 +141,7 @@ const sampleProducts = [
     stock: 120,
     isFeatured: false,
     isActive: true,
-    thumbnail: "https://placehold.co/300x300?text=Audio+Cable",
+    thumbnail: "https://placehold.co/300x300?text=3.5mm+Audio+Cable+1.5m",
     tags: ["audio cable", "3.5mm", "aux", "headphone cable"]
   },
   {
@@ -153,7 +153,7 @@ const sampleProducts = [
     stock: 90,
     isFeatured: false,
     isActive: true,
-    thumbnail: "https://placehold.co/300x300?text=C+Adapter",
+    thumbnail: "https://placehold.co/300x300?text=USB-C+to+3.5mm+Adapter",
     tags: ["adapter", "usb-c", "3.5mm", "audio"]
   },
   
@@ -167,7 +167,7 @@ const sampleProducts = [
     stock: 40,
     isFeatured: true,
     isActive: true,
-    thumbnail: "https://placehold.co/300x300?text=Power+Bank",
+    thumbnail: "https://placehold.co/300x300?text=Power+Bank+20000mAh",
     tags: ["power bank", "portable charger", "20000mah", "battery"]
   },
   {
@@ -179,7 +179,7 @@ const sampleProducts = [
     stock: 55,
     isFeatured: false,
     isActive: true,
-    thumbnail: "https://placehold.co/300x300?text=Slim+Power+Bank",
+    thumbnail: "https://placehold.co/300x300?text=Power+Bank+10000mAh+Slim",
     tags: ["power bank", "portable charger", "10000mah", "slim"]
   },
   
@@ -193,7 +193,7 @@ const sampleProducts = [
     stock: 35,
     isFeatured: false,
     isActive: true,
-    thumbnail: "https://placehold.co/300x300?text=Repair+Kit",
+    thumbnail: "https://placehold.co/300x300?text=Phone+Repair+Tool+Kit",
     tags: ["repair kit", "tools", "screwdriver", "phone repair"]
   },
   {
@@ -205,7 +205,7 @@ const sampleProducts = [
     stock: 65,
     isFeatured: false,
     isActive: true,
-    thumbnail: "https://placehold.co/300x300?text=Cable+Management",
+    thumbnail: "https://placehold.co/300x300?text=Cable+Management+Kit",
     tags: ["cable management", "organizer", "desk accessories"]
   }
 ];

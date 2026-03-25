@@ -30,6 +30,21 @@
   border-color: var(--error-red);
 }
 
+textarea.input-field {
+  width: 100%;
+  min-height: 120px;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
 .error-message {
   display: block;
   color: var(--error-red);

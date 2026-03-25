@@ -19,10 +19,11 @@ export default function Header() {
       <header>
         <div className="header-container">
           <div className="logo">
-            <h2>My App</h2>
+            <h2>TechTail</h2>
           </div>
           <nav className="navigation">
             <Link to="/landing">Home</Link>
+            <Link to="/products">Products</Link>
             <Link to="/inventory">Inventory</Link>
           </nav>
           <div className="auth-section">
