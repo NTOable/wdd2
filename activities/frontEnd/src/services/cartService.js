@@ -19,9 +19,23 @@ export const cartService = {
         "Authorization": `Bearer ${token}`,
       },
     });
-    const data = await response.json();
+    
+    // Handle non-JSON responses
+    const contentType = response.headers.get("content-type");
+    let data;
+    if (contentType && contentType.includes("application/json")) {
+      data = await response.json();
+    } else {
+      data = { message: "Server error occurred" };
+    }
 
     if (!response.ok) {
+      if (response.status === 401) {
+        // Token expired or invalid - clear storage
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+        throw new Error("Session expired. Please login again.");
+      }
       throw new Error(data.message || "Failed to fetch cart");
     }
     return data;
@@ -44,9 +58,22 @@ export const cartService = {
       },
       body: JSON.stringify(product),
     });
-    const data = await response.json();
+    
+    // Handle non-JSON responses
+    const contentType = response.headers.get("content-type");
+    let data;
+    if (contentType && contentType.includes("application/json")) {
+      data = await response.json();
+    } else {
+      data = { message: "Server error occurred" };
+    }
 
     if (!response.ok) {
+      if (response.status === 401) {
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+        throw new Error("Session expired. Please login again.");
+      }
       throw new Error(data.message || "Failed to add item to cart");
     }
     return data;

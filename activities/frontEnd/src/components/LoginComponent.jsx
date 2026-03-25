@@ -26,7 +26,8 @@ const LoginComponent = () => {
       setLoading(true);
       setErrors({});
       await login(formData);
-      navigate("/");
+      // After successful login, go to landing page instead of register
+      navigate("/landing");
     } catch (error) {
       setErrors({ error: error.message });
     } finally {

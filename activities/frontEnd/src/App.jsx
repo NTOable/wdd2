@@ -18,6 +18,7 @@ export default function App() {
         <Route path="/" element={<Navigate to="/auth?mode=register" replace />} />
         <Route path="/login" element={<Login />} />
         <Route path="/auth" element={<AuthPage />} />
+        <Route path="/landing" element={<Landing />} />
         <Route
           path="/inventory"
           element={

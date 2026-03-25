@@ -33,6 +33,7 @@ export const authService = {
     }
     if (data.token) {
       // localStorage is the browser storage
+      console.log("Storing token:", data.token.substring(0, 20) + "...");
       localStorage.setItem("token", data.token);
       // Backend returns {_id, username, token} - create user object
       const user = {
@@ -41,6 +42,7 @@ export const authService = {
         email: data.email
       };
       localStorage.setItem("user", JSON.stringify(user));
+      console.log("User stored:", user);
     }
     return data;
   },

@@ -1,5 +1,6 @@
 import { createContext, useState, useEffect, useCallback } from "react";
 import { cartService } from "../services/cartService";
+import { authService } from "../services/authService";
 import { useAuth } from "../hooks/useAuth";
 
 const CartContext = createContext(null);
@@ -11,7 +12,13 @@ export const CartProvider = ({ children }) => {
   const [cartTotal, setCartTotal] = useState(0);
   const [cartCount, setCartCount] = useState(0);
   const [loading, setLoading] = useState(false);
-  const { isAuthenticated } = useAuth();
+  const { user, isAuthenticated } = useAuth();
+
+  // Check if we have a valid token (not just user data)
+  const hasValidToken = () => {
+    const token = authService.getToken();
+    return !!token;
+  };
 
   // Calculate cart totals
   const calculateTotals = useCallback((products) => {
@@ -23,17 +30,29 @@ export const CartProvider = ({ children }) => {
 
   // Fetch cart from backend
   const fetchCart = useCallback(async () => {
-    if (!isAuthenticated) return;
+    // Only fetch if user is authenticated AND we have a valid token
+    if (!isAuthenticated || !hasValidToken()) {
+      console.log("fetchCart skipped: not authenticated or no valid token");
+      return;
+    }
     
     setLoading(true);
     try {
+      console.log("Fetching cart...");
       const cart = await cartService.getCart();
+      console.log("Cart fetched successfully:", cart);
       if (cart && cart.products) {
         setCartItems(cart.products);
         calculateTotals(cart.products);
       }
     } catch (error) {
-      console.error("Error fetching cart:", error);
+      console.error("Error fetching cart:", error.message);
+      // If session expired, don't update cart items (user will need to re-login)
+      if (error.message.includes("Session expired") || error.message.includes("Please login again") || error.message.includes("No authentication token")) {
+        setCartItems([]);
+        setCartTotal(0);
+        setCartCount(0);
+      }
     } finally {
       setLoading(false);
     }
@@ -41,7 +60,9 @@ export const CartProvider = ({ children }) => {
 
   // Fetch cart on mount and when auth changes
   useEffect(() => {
-    if (isAuthenticated) {
+    console.log("CartContext useEffect triggered, isAuthenticated:", isAuthenticated, "hasValidToken:", hasValidToken());
+    // Only fetch cart if we have both user and valid token
+    if (isAuthenticated && hasValidToken()) {
       fetchCart();
     } else {
       setCartItems([]);

@@ -28,8 +28,8 @@ const Login = () => {
     try {
       // function call to backend
       await login(formData); // 401
-      // Redirect to Inventory page after successful login
-      navigate("/inventory");
+      // Redirect to landing after successful login
+      navigate("/landing");
     } catch (error) {
       // display error message -> ask copilot
       setErrors({ message: error.message });

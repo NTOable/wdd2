@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Card from "../components/Card";
 import Input from "../components/Input";
 import Button from "../components/Button";
@@ -10,6 +11,7 @@ import { inventoryService } from "../services/inventoryService";
 import ProductDetails from "../components/ProductDetails";
 
 const Inventory = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     slug: "",
@@ -99,6 +101,13 @@ const Inventory = () => {
 
   return (
     <div className="inventory-container">
+      <Button 
+        onClick={() => navigate("/landing")}
+        style={{ marginBottom: '20px' }}
+      >
+        ← Return to Home
+      </Button>
+      
       <Card title="Create Product">
         <form className="inventory-form" onSubmit={handleSubmit}>
           <Input
