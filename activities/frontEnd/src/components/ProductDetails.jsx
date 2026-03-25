@@ -16,7 +16,7 @@ export default function ProductDetails({ product, onClose }) {
       });
       alert(`${product.name} added to cart!`);
     } catch (error) {
-      alert("Failed to add to cart: " + error.message);
+      alert(error.message);
     }
   };
 

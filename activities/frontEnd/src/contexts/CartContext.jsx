@@ -57,6 +57,15 @@ export const CartProvider = ({ children }) => {
 
   // Fetch cart on mount and when auth changes
   useEffect(() => {
+    // Check if we have user but no valid token (stale session)
+    if (isAuthenticated && !hasValidToken()) {
+      // Token missing but user exists - clear cart, don't fetch
+      setCartItems([]);
+      setCartTotal(0);
+      setCartCount(0);
+      return;
+    }
+    
     if (isAuthenticated && hasValidToken()) {
       fetchCart();
     } else {
@@ -82,8 +91,7 @@ export const CartProvider = ({ children }) => {
   const addToCart = async (product) => {
     // Check both isAuthenticated AND hasValidToken
     if (!isAuthenticated || !hasValidToken()) {
-      alert("Please login to add items to cart");
-      return;
+      throw new Error("Please login to add items to cart");
     }
 
     setLoading(true);
