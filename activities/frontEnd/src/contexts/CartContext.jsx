@@ -57,30 +57,39 @@ export const CartProvider = ({ children }) => {
 
   // Fetch cart on mount and when auth changes
   useEffect(() => {
-    // Check if we have user but no valid token (stale session)
-    if (isAuthenticated && !hasValidToken()) {
-      // Token missing but user exists - clear cart, don't fetch
-      setCartItems([]);
-      setCartTotal(0);
-      setCartCount(0);
-      return;
-    }
+    const checkAuthAndFetch = async () => {
+      // Check if we have user but no valid token (stale session)
+      if (isAuthenticated && !hasValidToken()) {
+        setCartItems([]);
+        setCartTotal(0);
+        setCartCount(0);
+        return;
+      }
+      
+      if (isAuthenticated && hasValidToken()) {
+        await fetchCart();
+      } else {
+        setCartItems([]);
+        setCartTotal(0);
+        setCartCount(0);
+      }
+    };
     
-    if (isAuthenticated && hasValidToken()) {
-      fetchCart();
-    } else {
-      setCartItems([]);
-      setCartTotal(0);
-      setCartCount(0);
-    }
+    // Small delay to ensure token is persisted in localStorage
+    const timer = setTimeout(checkAuthAndFetch, 50);
+    
+    return () => clearTimeout(timer);
   }, [isAuthenticated, fetchCart]);
 
   // Listen for login success event to fetch cart
   useEffect(() => {
     const handleLoginSuccess = () => {
-      if (hasValidToken()) {
-        fetchCart();
-      }
+      // Small delay to ensure token is fully persisted
+      setTimeout(() => {
+        if (hasValidToken()) {
+          fetchCart();
+        }
+      }, 100);
     };
     
     window.addEventListener('auth-login-success', handleLoginSuccess);

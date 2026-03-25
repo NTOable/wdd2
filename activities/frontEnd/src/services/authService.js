@@ -27,11 +27,13 @@ export const authService = {
       body: JSON.stringify(credentials),
     });
     const data = await response.json();
+    console.log("Login response:", data);
 
     if (!response.ok) {
       throw new Error(data.message || "Login failed.");
     }
     if (data.token) {
+      console.log("Storing token:", data.token);
       localStorage.setItem("token", data.token);
       const user = {
         _id: data._id,
@@ -40,6 +42,8 @@ export const authService = {
       };
       localStorage.setItem("user", JSON.stringify(user));
       window.dispatchEvent(new Event('auth-login-success'));
+    } else {
+      console.warn("No token in login response!");
     }
     return data;
   },
@@ -47,17 +51,23 @@ export const authService = {
   async logout() {
     const token = localStorage.getItem("token");
 
-    const response = await fetch(`${API_URL}logout`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
-
-    return response.ok;
+    try {
+      const response = await fetch(`${API_URL}logout`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+      return response.ok;
+    } catch (error) {
+      console.error("Logout error:", error);
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+      return false;
+    }
   },
 
   getCurrentUser() {

@@ -6,6 +6,8 @@ export const cartService = {
   // Get user's cart
   async getCart() {
     const token = authService.getToken();
+    console.log("Cart fetch - Token from storage:", token);
+    console.log("Cart fetch - Authorization header:", `Bearer ${token}`);
     
     if (!token) {
       throw new Error("No authentication token found. Please login.");
@@ -18,6 +20,7 @@ export const cartService = {
         "Authorization": `Bearer ${token}`,
       },
     });
+    console.log("Cart fetch response status:", response.status);
     
     // Handle non-JSON responses
     const contentType = response.headers.get("content-type");

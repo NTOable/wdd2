@@ -24,11 +24,10 @@ const cartSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 // Update totalAmount before saving
-cartSchema.pre('save', function(next) {
+cartSchema.pre('save', async function() {
     this.totalAmount = this.products.reduce((total, item) => {
         return total + (item.price * item.quantity);
     }, 0);
-    next();
 });
 
 export default mongoose.model('Cart', cartSchema);

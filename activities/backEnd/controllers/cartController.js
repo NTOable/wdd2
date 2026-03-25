@@ -4,11 +4,15 @@ import jwt from 'jsonwebtoken';
 // Helper function to verify token
 const verifyToken = (req) => {
     const token = req.headers['authorization'];
+    console.log('Backend - Authorization header:', token);
     if (!token) {
         throw new Error('No token provided');
     }
     const tokenString = token.startsWith('Bearer ') ? token.slice(7, token.length) : token;
+    console.log('Backend - Token string:', tokenString);
+    console.log('Backend - JWT_SECRET:', process.env.JWT_SECRET ? 'present' : 'missing');
     const decoded = jwt.verify(tokenString, process.env.JWT_SECRET);
+    console.log('Backend - Decoded:', decoded);
     return decoded;
 };
 
@@ -17,14 +21,19 @@ export const getCart = async (req, res) => {
     try {
         const user = verifyToken(req);
         const userId = user.id;
+        console.log('Backend - User ID:', userId);
+        
         let cart = await Cart.findOne({ userId }).populate('products.productId');
+        console.log('Backend - Cart found:', cart);
         
         if (!cart) {
             cart = await Cart.create({ userId, products: [], totalAmount: 0 });
+            console.log('Backend - Created new cart:', cart);
         }
         
         res.status(200).json(cart);
     } catch (error) {
+        console.error('Backend - getCart error:', error);
         res.status(401).json({ message: error.message || 'Authentication failed' });
     }
 };
