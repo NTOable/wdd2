@@ -27,13 +27,11 @@ export const authService = {
       body: JSON.stringify(credentials),
     });
     const data = await response.json();
-    console.log("Login response:", data);
 
     if (!response.ok) {
       throw new Error(data.message || "Login failed.");
     }
     if (data.token) {
-      console.log("Storing token:", data.token);
       localStorage.setItem("token", data.token);
       const user = {
         _id: data._id,
@@ -42,8 +40,6 @@ export const authService = {
       };
       localStorage.setItem("user", JSON.stringify(user));
       window.dispatchEvent(new Event('auth-login-success'));
-    } else {
-      console.warn("No token in login response!");
     }
     return data;
   },

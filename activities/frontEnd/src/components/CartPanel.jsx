@@ -1,8 +1,11 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useCart } from "../hooks/useCart";
 import Button from "./Button";
 import "./CartPanel.css";
 
 export default function CartPanel({ onClose }) {
+  const navigate = useNavigate();
   const { 
     cartItems, 
     cartTotal, 
@@ -24,7 +27,8 @@ export default function CartPanel({ onClose }) {
   };
 
   const handleCheckout = () => {
-    alert("Checkout functionality coming soon!");
+    onClose();
+    navigate("/checkout");
   };
 
   return (

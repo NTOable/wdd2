@@ -4,6 +4,7 @@ import Landing from "./pages/Landing";
 import Login from "./pages/Login";
 import AuthPage from "./pages/AuthPage";
 import Inventory from "./pages/Inventory";
+import Checkout from "./pages/Checkout";
 
 function PrivateRoute({ children }) {
   const { user } = useAuth();
@@ -24,6 +25,14 @@ export default function App() {
           element={
             <PrivateRoute>
               <Inventory />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/checkout"
+          element={
+            <PrivateRoute>
+              <Checkout />
             </PrivateRoute>
           }
         />
