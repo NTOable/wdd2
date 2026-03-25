@@ -15,32 +15,32 @@ const sampleProducts = [
     stock: 50,
     isFeatured: true,
     isActive: true,
-    thumbnail: "https://placehold.co/300x300?text=USB-C+Fast+Charger+65W",
+    thumbnail: "http://localhost:3000/images/chargepad.jpg",
     tags: ["charger", "usb-c", "fast charging", "gan"]
   },
   {
-    name: "Lightning to USB Cable 1m",
-    slug: "lightning-usb-cable-1m",
-    description: "MFi-certified Lightning cable for iPhone, iPad, and iPod. Supports fast charging and data sync.",
-    price: 19.99,
+    name: "Micro USB Cable 1m",
+    slug: "micro-usb-cable-1m",
+    description: "Durable micro USB cable for Android devices. Supports fast charging and data sync.",
+    price: 9.99,
     category: "Cables",
     stock: 100,
     isFeatured: false,
     isActive: true,
-    thumbnail: "https://placehold.co/300x300?text=Lightning+to+USB+Cable+1m",
-    tags: ["cable", "lightning", "mfi", "apple"]
+    thumbnail: "http://localhost:3000/images/microusbcable.jpg",
+    tags: ["cable", "micro usb", "android", "charging"]
   },
   {
-    name: "HDMI Cable 4K 2m",
-    slug: "hdmi-cable-4k-2m",
-    description: "Premium HDMI 2.0 cable supporting 4K@60Hz, HDR, and Dolby Atmos. Perfect for connecting monitors and TVs.",
-    price: 24.99,
-    category: "Cables",
-    stock: 75,
-    isFeatured: true,
+    name: "USB Hub 7-Port",
+    slug: "usb-hub-7-port",
+    description: "Powered USB 3.0 hub with 7 ports. Includes individual power switches and LED indicators.",
+    price: 34.99,
+    category: "Computer Accessories",
+    stock: 45,
+    isFeatured: false,
     isActive: true,
-    thumbnail: "https://placehold.co/300x300?text=HDMI+Cable+4K+2m",
-    tags: ["cable", "hdmi", "4k", "video"]
+    thumbnail: "http://localhost:3000/images/usb.jpg",
+    tags: ["usb hub", "usb 3.0", "hub", "accessories"]
   },
   
   // Phone Accessories
@@ -53,7 +53,7 @@ const sampleProducts = [
     stock: 200,
     isFeatured: false,
     isActive: true,
-    thumbnail: "https://placehold.co/300x300?text=Tempered+Glass+Screen+Protector",
+    thumbnail: "https://placehold.co/300x300?text=Screen+Protector",
     tags: ["screen protector", "tempered glass", "protection"]
   },
   {
@@ -65,7 +65,7 @@ const sampleProducts = [
     stock: 60,
     isFeatured: true,
     isActive: true,
-    thumbnail: "https://placehold.co/300x300?text=Wireless+Charging+Pad+15W",
+    thumbnail: "http://localhost:3000/images/chargepad.jpg",
     tags: ["wireless charger", "qi", "charging pad"]
   },
   {
@@ -77,34 +77,34 @@ const sampleProducts = [
     stock: 150,
     isFeatured: false,
     isActive: true,
-    thumbnail: "https://placehold.co/300x300?text=Phone+Case+Clear+Back",
+    thumbnail: "https://placehold.co/300x300?text=Phone+Case",
     tags: ["phone case", "clear case", "protection"]
   },
   
   // Computer Parts
   {
-    name: "External SSD 1TB NVMe",
-    slug: "external-ssd-1tb-nvme",
-    description: "Portable NVMe SSD with read speeds up to 1050MB/s. USB-C 3.2 Gen 2 interface. Compact aluminum design.",
-    price: 109.99,
+    name: "External Hard Drive 1TB",
+    slug: "external-hard-drive-1tb",
+    description: "Portable external hard drive with USB 3.0. Fast and reliable storage for all your files.",
+    price: 59.99,
     category: "Storage",
     stock: 30,
     isFeatured: true,
     isActive: true,
-    thumbnail: "https://placehold.co/300x300?text=External+SSD+1TB+NVMe",
-    tags: ["ssd", "external storage", "nvme", "portable"]
+    thumbnail: "http://localhost:3000/images/externalharddrive.jpg",
+    tags: ["external hard drive", "storage", "usb 3.0", "portable"]
   },
   {
-    name: "USB Hub 7-Port",
-    slug: "usb-hub-7-port",
-    description: "Powered USB 3.0 hub with 7 ports. Includes individual power switches and LED indicators.",
-    price: 34.99,
+    name: "ASUS ROG Keyboard",
+    slug: "asus-rog-keyboard",
+    description: "Gaming mechanical keyboard with RGB lighting and Cherry MX switches.",
+    price: 149.99,
     category: "Computer Accessories",
-    stock: 45,
-    isFeatured: false,
+    stock: 25,
+    isFeatured: true,
     isActive: true,
-    thumbnail: "https://placehold.co/300x300?text=USB+Hub+7-Port",
-    tags: ["usb hub", "usb 3.0", "hub", "accessories"]
+    thumbnail: "http://localhost:3000/images/asusrogkeyboard.jpg",
+    tags: ["keyboard", "gaming", "mechanical", "rgb"]
   },
   {
     name: "Mechanical Keyboard Switches - Red",
@@ -115,8 +115,20 @@ const sampleProducts = [
     stock: 80,
     isFeatured: false,
     isActive: true,
-    thumbnail: "https://placehold.co/300x300?text=Mechanical+Keyboard+Switches+Red",
+    thumbnail: "http://localhost:3000/images/mekred.jpg",
     tags: ["keyboard switches", "mechanical", "cherry mx", "red"]
+  },
+  {
+    name: "Gaming Mouse",
+    slug: "gaming-mouse",
+    description: "High-performance gaming mouse with adjustable DPI and RGB lighting.",
+    price: 39.99,
+    category: "Computer Accessories",
+    stock: 50,
+    isFeatured: true,
+    isActive: true,
+    thumbnail: "http://localhost:3000/images/gamemouse.jpg",
+    tags: ["mouse", "gaming", "rgb", "dpi"]
   },
   
   // Audio
@@ -129,32 +141,34 @@ const sampleProducts = [
     stock: 70,
     isFeatured: true,
     isActive: true,
-    thumbnail: "https://placehold.co/300x300?text=Wireless+Earbuds+TWS",
+    thumbnail: "http://localhost:3000/images/wirelessbuds.jpg",
     tags: ["earbuds", "tws", "bluetooth", "wireless audio"]
   },
   {
-    name: "3.5mm Audio Cable 1.5m",
-    slug: "audio-cable-35mm-15m",
-    description: "Gold-plated connectors, oxygen-free copper wiring. Compatible with headphones, speakers, and audio devices.",
-    price: 9.99,
+    name: "Premium Headphones",
+    slug: "premium-headphones",
+    description: "High-quality over-ear headphones with noise cancellation and premium sound quality.",
+    price: 89.99,
     category: "Audio",
-    stock: 120,
-    isFeatured: false,
+    stock: 25,
+    isFeatured: true,
     isActive: true,
-    thumbnail: "https://placehold.co/300x300?text=3.5mm+Audio+Cable+1.5m",
-    tags: ["audio cable", "3.5mm", "aux", "headphone cable"]
+    thumbnail: "http://localhost:3000/images/headphones.jpg",
+    tags: ["headphones", "audio", "noise cancellation", "bluetooth"]
   },
+  
+  // Laptop
   {
-    name: "USB-C to 3.5mm Adapter",
-    slug: "usb-c-to-35mm-adapter",
-    description: "USB-C to 3.5mm headphone jack adapter. Supports DAC and remote control. Plug and play.",
-    price: 8.99,
-    category: "Audio",
-    stock: 90,
-    isFeatured: false,
+    name: "Lenovo Laptop",
+    slug: "lenovo-laptop",
+    description: "Powerful laptop for work and play. Intel processor, 8GB RAM, 256GB SSD.",
+    price: 599.99,
+    category: "Laptops",
+    stock: 15,
+    isFeatured: true,
     isActive: true,
-    thumbnail: "https://placehold.co/300x300?text=USB-C+to+3.5mm+Adapter",
-    tags: ["adapter", "usb-c", "3.5mm", "audio"]
+    thumbnail: "http://localhost:3000/images/lenovo.jpg",
+    tags: ["laptop", "lenovo", "computer", "portable"]
   },
   
   // Power Banks
@@ -167,20 +181,8 @@ const sampleProducts = [
     stock: 40,
     isFeatured: true,
     isActive: true,
-    thumbnail: "https://placehold.co/300x300?text=Power+Bank+20000mAh",
+    thumbnail: "https://placehold.co/300x300?text=Power+Bank",
     tags: ["power bank", "portable charger", "20000mah", "battery"]
-  },
-  {
-    name: "Power Bank 10000mAh Slim",
-    slug: "power-bank-10000mah-slim",
-    description: "Slim and lightweight power bank. Fast charging support. Perfect for travel.",
-    price: 24.99,
-    category: "Power Banks",
-    stock: 55,
-    isFeatured: false,
-    isActive: true,
-    thumbnail: "https://placehold.co/300x300?text=Power+Bank+10000mAh+Slim",
-    tags: ["power bank", "portable charger", "10000mah", "slim"]
   },
   
   // Tools & Repair
@@ -191,9 +193,9 @@ const sampleProducts = [
     price: 29.99,
     category: "Tools",
     stock: 35,
-    isFeatured: false,
+    isFeatured: true,
     isActive: true,
-    thumbnail: "https://placehold.co/300x300?text=Phone+Repair+Tool+Kit",
+    thumbnail: "https://placehold.co/300x300?text=Repair+Kit",
     tags: ["repair kit", "tools", "screwdriver", "phone repair"]
   },
   {
@@ -203,9 +205,9 @@ const sampleProducts = [
     price: 14.99,
     category: "Accessories",
     stock: 65,
-    isFeatured: false,
+    isFeatured: true,
     isActive: true,
-    thumbnail: "https://placehold.co/300x300?text=Cable+Management+Kit",
+    thumbnail: "https://placehold.co/300x300?text=Cable+Management",
     tags: ["cable management", "organizer", "desk accessories"]
   }
 ];

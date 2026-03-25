@@ -51,7 +51,7 @@ const RegisterComponent = () => {
         </div>
       )}
       <Input
-        label="UserName"
+        label="Username"
         type="text"
         name="username"
         value={formData.username}
