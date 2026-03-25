@@ -6,11 +6,8 @@ const AuthContext = createContext(null);
 export { AuthContext };
 
 export const AuthProvider = ({ children }) => {
-  console.log("AuthProvider rendering");
   const [user, setUser] = useState(() => {
-    const storedUser = authService.getCurrentUser();
-    console.log("Initial user from localStorage:", storedUser);
-    return storedUser;
+    return authService.getCurrentUser();
   });
   const [loading, setLoading] = useState(true);
 
@@ -21,16 +18,12 @@ export const AuthProvider = ({ children }) => {
   /* eslint-enable react-hooks/set-state-in-effect */
 
   const login = async (credentials) => {
-    console.log("login called with:", credentials);
     const data = await authService.login(credentials);
-    console.log("login response:", data);
-    // Backend returns {_id, username, token} - normalize to user object
     const user = {
       _id: data._id,
       username: data.username,
       email: data.email
     };
-    console.log("Setting user state:", user);
     setUser(user);
     return data;
   };
@@ -53,8 +46,6 @@ export const AuthProvider = ({ children }) => {
     logout,
     isAuthenticated: !!user,
   }), [user, loading]);
-
-  console.log("AuthProvider value:", { user, isAuthenticated: !!user });
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };

@@ -6,7 +6,6 @@ export const cartService = {
   // Get user's cart
   async getCart() {
     const token = authService.getToken();
-    console.log("getCart token:", token); // Debug
     
     if (!token) {
       throw new Error("No authentication token found. Please login.");
@@ -44,7 +43,6 @@ export const cartService = {
   // Add item to cart
   async addToCart(product) {
     const token = authService.getToken();
-    console.log("addToCart token:", token); // Debug
     
     if (!token) {
       throw new Error("No authentication token found. Please login.");

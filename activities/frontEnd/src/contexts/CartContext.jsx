@@ -32,15 +32,12 @@ export const CartProvider = ({ children }) => {
   const fetchCart = useCallback(async () => {
     // Only fetch if user is authenticated AND we have a valid token
     if (!isAuthenticated || !hasValidToken()) {
-      console.log("fetchCart skipped: not authenticated or no valid token");
       return;
     }
     
     setLoading(true);
     try {
-      console.log("Fetching cart...");
       const cart = await cartService.getCart();
-      console.log("Cart fetched successfully:", cart);
       if (cart && cart.products) {
         setCartItems(cart.products);
         calculateTotals(cart.products);
@@ -60,8 +57,6 @@ export const CartProvider = ({ children }) => {
 
   // Fetch cart on mount and when auth changes
   useEffect(() => {
-    console.log("CartContext useEffect triggered, isAuthenticated:", isAuthenticated, "hasValidToken:", hasValidToken());
-    // Only fetch cart if we have both user and valid token
     if (isAuthenticated && hasValidToken()) {
       fetchCart();
     } else {
@@ -71,9 +66,22 @@ export const CartProvider = ({ children }) => {
     }
   }, [isAuthenticated, fetchCart]);
 
+  // Listen for login success event to fetch cart
+  useEffect(() => {
+    const handleLoginSuccess = () => {
+      if (hasValidToken()) {
+        fetchCart();
+      }
+    };
+    
+    window.addEventListener('auth-login-success', handleLoginSuccess);
+    return () => window.removeEventListener('auth-login-success', handleLoginSuccess);
+  }, [fetchCart]);
+
   // Add item to cart
   const addToCart = async (product) => {
-    if (!isAuthenticated) {
+    // Check both isAuthenticated AND hasValidToken
+    if (!isAuthenticated || !hasValidToken()) {
       alert("Please login to add items to cart");
       return;
     }

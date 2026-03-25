@@ -8,7 +8,6 @@ import ProductDetails from "../components/ProductDetails";
 const Landing = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   
-  console.log("Landing is rendering");
   return (
     <>
       <Header />
